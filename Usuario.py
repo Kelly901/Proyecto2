@@ -9,7 +9,5 @@ class Usuario:
     	self.contraseña=contraseña
     	self.confir_contraseña=confir_contraseña
     	
-    	print("Entre al contructor")
-
-usuario = Usuario(1,"Diego","---","Squery","123","123")
-print(usuario.nombre_usuario)       
+    	
+    
