@@ -1,10 +1,30 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from Autenticacion import Autenticacion
 app = Flask(__name__)
 
 miUsuario=[]
 
 miUsuario.append(Autenticacion(1,'user','123'))
+miUsuario.append(Autenticacion(2,'user2','123'))
+@app.route('/login',methods=['POST'])
+
+def login():
+
+	if request.method == 'POST':
+
+		nombre=request.form.get('nombre_usuario')
+		password=request.form.get('pasw_usuario')
+
+		for user in miUsuario:
+
+			if user.autenticar(nombre,password)==True:
+
+				return user.dump()
+
+		return "False"		
+		
+	
+	
 
 @app.route("/")
 def index():
