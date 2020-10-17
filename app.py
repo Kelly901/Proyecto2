@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from Autenticacion import Autenticacion
+from flask_cors import CORS
 app = Flask(__name__)
 
 miUsuario=[]

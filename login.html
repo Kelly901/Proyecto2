@@ -5,23 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Login</title>
   <link rel="stylesheet" href="master.css">
+
+  <!--Agregar JQUERY-->
+  <script  scr="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
   <div class="login">
     <img class= "avatar" src="https://i.pinimg.com/originals/99/93/42/999342d769a12d42032cd65561d5cd3f.jpg" alt="imagen de fono">
     <h1>Login</h1>
-    <form >
+    <form id="loginForm" >
       <label for="username">Nombre de usuario</label>
-      <input type="text" placeholder="Usuario">
+      <input name="user_name" type="text" placeholder="Usuario">
 
       <label for="password">Password</label>
-      <input type="password" placeholder="Contraseña">
+      <input name="user_pass" type="password" placeholder="Contraseña">
 
       <input type="submit" value="login">
 
       <a href="#">|Olvide mi contraseña|</a><br>
-      <a href="#">|Crear Cuenta|</a>
+      <a href="registro.html">|Crear Cuenta|</a>
     </form>
+    <!-- /.panel-->
+
   </div>
+   <!-- codigo para hacer logi-->
+    <script>
+      //Ajuntamos un controlador para el form
+      $("#loginForm").submit(function(event){
+        //Evento que el formulario
+        event.preventDefault();
+        //Obtener los valores de la caja de texto
+
+        var $form = $(this),
+        user_name= $form.find("input[name='user_name']").val(),
+        user_pass = $form.find("input[name='user_pass']").val(),
+        url = 'https://proyectogame.herokuapp.com/login';
+
+        var posting = $.post(url, {
+          nombre_usuario: user_name,
+          passw_usuario: user_pass
+
+        })
+          posting.done(function(data){
+
+            var  content= $(data).find("#content")
+            console.long(content);
+          })
+      });
+    </script>
 </body>
 </html>
