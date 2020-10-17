@@ -9,10 +9,18 @@ class Crear_Usuario:
 	def crearUsuario(self,nombre,apellido,nombre_usuario,contraseña,confir_contraseña):
 
 		for us in self.usuario:
+
 			if us.nombre_usuario == nombre_usuario:
 				print("El nombre de usuario ya esta repetido")
 				return False
+				#Se comparan que la contraseña coincida con comparar contraseña
+			elif contraseña!= confir_contraseña:
+				 	print("Ingrese otra contraseña")
+				 	print(nombre_usuario)
 
+				 	return
+
+				 	
 		self.usuario.append(Usuario(self.contador,nombre,apellido,nombre_usuario,contraseña,confir_contraseña))
 		self.contador += 1
 		return True
@@ -25,7 +33,7 @@ class Crear_Usuario:
 
 
 var_usuario= Crear_Usuario()			
-var_usuario.crearUsuario("Diego","---","Squery","123","123")
-var_usuario.crearUsuario("Diego","---","Squery2","123","123")
-var_usuario.crearUsuario("Diego","---","Squery2","123","123")
+var_usuario.crearUsuario("Diego","---","s2","1234","12345")
+var_usuario.crearUsuario("Kelly","---","s","123","123")
+var_usuario.crearUsuario("Susy","---","Susy","123","123")
 var_usuario.listar()
