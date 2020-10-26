@@ -19,12 +19,13 @@ def login():
 		for user in miUsuario:
 
 			if user.autenticar(nombre,password)==True:
+			
+				return user.dump() 
+				
 
-				return user.dump()
-
-		return "False"		
+		return "hola"		
 		
-	
+print(login)	
 	
 
 @app.route("/")
