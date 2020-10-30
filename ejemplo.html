@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>soy ejemplo</title>
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+	<link rel="stylesheet" href="master.css">
+</head>
+<body>
+<div class="login">
+    <img class= "avatar" src="https://i.pinimg.com/originals/99/93/42/999342d769a12d42032cd65561d5cd3f.jpg" alt="imagen de fono">
+    <h1>Login</h1>
+   <form id="loginForm" >
+      <label for="username">Nombre de usuario</label>
+      <input name="user_name" type="text" placeholder="Usuario">
+
+      <label for="password">Password</label>
+      <input name="user_pass" type="password" placeholder="Contraseña">
+
+      <input id="boton" type="submit" value="login">
+
+      <a href="#">|Olvide mi contraseña|</a><br>
+      <a href="registro.html">|Crear Cuenta|</a>
+    
+    <!-- /.panel-->
+     </form>
+  </div>
+   <!-- codigo para hacer logi-->
+   <button id="boton1">hola soy un boton</button>
+</body>
+</html>
+
+<script type="text/javascript">
+      //Ajuntamos un controlador para el form
+  $("#loginForm").submit(function(event){
+        //Evento que el formulario
+        event.preventDefault();
+        //Obtener los valores de la caja de texto
+
+        var $form = $(this),
+        user_name= $form.find("input[name='user_name']").val(),
+        user_pass = $form.find("input[name='user_pass']").val(),
+        url = 'http://127.0.0.1:9000/login';
+
+        var posting = $.post(url, {
+          nombre_usuario: user_name,
+          passw_usuario: user_pass
+
+        })
+        alert('---')
+          posting.done(function(data){
+
+            var  content= $(data).find("#content")
+            console.long(content);
+          })
+          
+      });
+      
+     
+    </script>

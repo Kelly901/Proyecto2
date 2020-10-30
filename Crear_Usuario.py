@@ -18,7 +18,7 @@ class Crear_Usuario:
 				 	print("Ingrese otra contraseña")
 				 	print(nombre_usuario)
 
-				 	return
+				 	return False
 
 				 	
 		self.usuario.append(Usuario(self.contador,nombre,apellido,nombre_usuario,contraseña,confir_contraseña))
@@ -32,8 +32,4 @@ class Crear_Usuario:
 			print(str(us.ids)+ '\t' + us.nombre + '\t\t' + us.nombre_usuario)	
 
 
-var_usuario= Crear_Usuario()			
-var_usuario.crearUsuario("Diego","---","s2","1234","12345")
-var_usuario.crearUsuario("Kelly","---","s","123","123")
-var_usuario.crearUsuario("Susy","---","Susy","123","123")
-var_usuario.listar()
+

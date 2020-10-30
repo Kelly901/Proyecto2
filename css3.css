@@ -1,16 +1,18 @@
 body{
     margin: 0;
     padding: 0;
-    background:linear-gradient(30deg,#16b8b8,#139797,#0d6363,black,black);
+    background:linear-gradient(30deg,#0096f7,#066f8f,#0f699e,black,black);
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
-}
+   
 
+
+}
 .login{
-    width: 500px;
-    height: 560px;
-    
+    width: 360px;
+    height: 420px;
+    background: #000;
     border: skyblue 5px solid;
     color: #fff;
     top: 50%;
@@ -26,17 +28,15 @@ body{
     height: 100px;
     border-radius: 50%;
     position: absolute;
-    top: 15px;
+    top: -50px;
     left: calc(50% - 50%)
 }
-
 .login h1{
     margin: 0;
     padding: 0 0 20px;
     text-align: center;
     font-size: 22px;
 }
-
 .login label{
     margin: 0;
     padding: 0;
@@ -52,22 +52,24 @@ body{
 .login input[type="text"],
 .login input[type="password"]{
 border: none;
-border-bottom: 1px solid #000;
-
-height: 25px;
+border-bottom: 1px solid #fff;
+background: transparent;
+outline: none;
+height: 40px;
+color:#fff;
 font-size: 16px;
-color: black;
 }
 
 .login button[type="button"]{
     border: none;
     outline: none;
     height: 40px;
-    background: black;
-    border-bottom: 5px solid skyblue;
+    width: 270px;
+    background: #00aae4;
+    border-bottom: 5px solid #0045a6;
     box-shadow: 6px 6px 6px #999;
     font-size: 16px;
-    color: white;
+ 
     text-align: center;
     transition: all o.2s ease 0s;
     font-weight: bold;
@@ -89,16 +91,14 @@ color: black;
     
 
 }
-
 .login a{
     text-decoration: none;
-    font-style: oblique;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 20px;
-    color:black;
+    color: aqua;
 }
 
 .login a:hover{
-    color: blue; 
+    color: palevioletred; 
 
 }

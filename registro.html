@@ -12,27 +12,66 @@
     <h1>Crear Cuenta</h1>
     <form >
       <label for="nombre">Nombre</label>
-      <input type="text" placeholder="Nombre"><br>
+      <input id="nombre" type="text" placeholder="Nombre"><br>
       
       <label for="apellido">Apellido</label>
-      <input type="text" placeholder="Apellido">
+      <input id="apellido" type="text" placeholder="Apellido">
       
 
       <label for="username">Nombre de usuario</label>
-      <input type="text" placeholder="Usuario">
+      <input id="usuario" type="text" placeholder="Usuario">
       
       <label for="password">Password</label>
-      <input type="password" placeholder="contraseña">
+      <input id="password" type="password" placeholder="contraseña">
 
       <label for="password">Confirmar Password</label>
-      <input type="password" placeholder="Confirmar contraseña">
+      <input id="confirmar_password" type="password" placeholder="Confirmar contraseña">
 
 
-      <input type="submit" value="Registrarse">
+      <button type="button" onclick="registrarse()">Registrarse</button>
 
-      <a href="#">Iniciar Sesión</a>
+      <a href="index.html">Iniciar Sesión</a>
      
     </form>
   </div>
+
+  <script>
+      function registrarse()
+     {
+       var nombre = document.getElementById("nombre").value
+       var apellido= document.getElementById("apellido").value
+       var usuario= document.getElementById("usuario").value
+       var password= document.getElementById("password").value
+       var confirmar_password= document.getElementById("confirmar_password").value
+       //var estado='1'
+       fetch('http://127.0.0.1:9000/registrarse',{
+         method : 'POST',
+         headers: {
+          'Content-Type': 'application/json'
+         },
+         body:JSON .stringify({
+           "nombre" : nombre,
+           "apellido" : apellido,
+           "usuario" : usuario,
+           "password" : password,
+           "confirmar_password": confirmar_password
+         })
+         
+       })
+       .then(res=> res.json())
+       .catch(err =>{
+                console.error('Error', err)
+                window.alert("ocurrio un error")
+            })
+       .then(response =>{
+         if(response.estado == "0"){
+          window.alert("El usuario ya existe o la contraseña es incorrecta")
+         }else{
+          window.alert("Usuario creado con exito")
+         }
+         
+       })
+     }
+  </script>
 </body>
 </html>

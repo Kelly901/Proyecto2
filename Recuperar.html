@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Password</title>
+    <link rel="stylesheet" href="css3.css">
+</head>
+<body>
+    <div class="login">
+        <img class= "avatar" src="https://i.pinimg.com/originals/99/93/42/999342d769a12d42032cd65561d5cd3f.jpg" alt="imagen de fono">
+        <h1>Recuperar contraseña</h1>
+        <form id="loginForm" >
+          <label for="username">Nombre de usuario</label>
+          <input id="nombre_usuario" type="text" placeholder="Usuario">
+    
+          <button type="button" onclick="recuperacion()">Recuperar</button><br> 
+          
+          <a href="index.html">|Iniciar Sesion|</a>
+        </form>
+        <!-- /.panel-->
+    
+      </div>  
+      
+      <script>
+        function recuperacion()
+        {
+          var nombre_usuario = document.getElementById("nombre_usuario").value
+          //var estado='1'
+          fetch('http://127.0.0.1:9000/recuperacion',{
+            method : 'POST',
+            headers: {
+             'Content-Type': 'application/json'
+            },
+            body:JSON .stringify({
+              "nombre_usuario" : nombre_usuario
+              
+            })
+            
+          })
+          .then(res=> res.json())
+          .catch(err =>{
+                   console.error('Error', err)
+                   window.alert("ocurrio un error, ver consola")
+               })
+          .then(response =>{
+            if(response.estado == "0"){
+             window.alert("El usario no ha sido encontrado")
+            }else{
+             window.alert("Su contraseña es: "+response.contrasena)
+            }
+            
+          })
+        }
+      </script>
+
+</body>
+</html>

@@ -37,6 +37,7 @@ body{
     text-align: center;
     font-size: 22px;
 }
+
 .login label{
     margin: 0;
     padding: 0;
@@ -60,10 +61,11 @@ color:#fff;
 font-size: 16px;
 }
 
-.login input[type="submit"]{
+.login button[type="button"]{
     border: none;
     outline: none;
     height: 40px;
+    width: 270px;
     background: #00aae4;
     border-bottom: 5px solid #0045a6;
     box-shadow: 6px 6px 6px #999;
@@ -75,11 +77,11 @@ font-size: 16px;
     cursor: pointer;
     display: block;
 }
-.login input[type="submit"]:hover{
+.login button[type="button"]:hover{
     background: #0096f7;
 
 }
-.login input[type="submit"]:active{
+.login button[type="button"]:active{
     box-shadow: 2px 2px 2px #777, 0px 0px 35px
     0px #00b7f8;
     border-bottom: 1px solid #0045A6;
@@ -92,7 +94,7 @@ font-size: 16px;
 }
 .login a{
     text-decoration: none;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
     color: aqua;
 }
