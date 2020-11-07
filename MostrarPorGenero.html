@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <title>Mostrar Por Genero</title>
     <link rel="stylesheet" type="text/css" href="principal.css">
 </head>
 <body onload="obtenerImagenes()">
@@ -34,7 +34,6 @@
       </div>
 
     </div>
-
     <div id="presentacion">
       <div id="centro2">
         <div id="izquierda">
@@ -45,12 +44,12 @@
         <div id="derecha">
           <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
           <div id="categoria">
-            <select name="producto" id="miselect">
-              
+            <select id="miselect">
+             
             </select>
 
             <input id="buscar1" for="texto" type="text" placeholder="Buscar"> 
-           
+            
         </div>
           </div>
           
@@ -64,7 +63,7 @@
       <div id="centro3">
         <div id="menu2">
           <ul>
-            <li ><a href="CatalagoCliente.html">Catalogo de videojuegos</a></li>
+            <li ><a href="Ca">Catalogo de videojuegos</a></li>
             <li ><a href="MiBiblioteca.html">Mi biblioteca</a></li>
             <li ><a href="Perfil.html">Perfil</a></li>
            
@@ -72,7 +71,7 @@
         </div>
       </div>
     </div>
-    
+
     <div id="prueba" >
       <ul id="prueba2">
       </ul>
@@ -80,7 +79,10 @@
 
     <script>
       function obtenerImagenes(){
-
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const idGenero = urlParams.get('idGenero')  
+        alert(idGenero)
         fetch("http://127.0.0.1:9000/imagen",{
           method:'GET',
           headers:{
@@ -95,29 +97,33 @@
           var imagenes= response
           console.log(imagenes)
           var colocarImagenes= document.querySelector('#prueba #prueba2')
-           imagenes.slice(0,4).forEach(element => {
+          
+          
+           imagenes.forEach(element => {
+            if(element.categoria1==idGenero || element.categoria2==idGenero || element.categoria3==idGenero){
+               
              console.log(element.foto)
              colocarImagenes.innerHTML+=`
                                           
-                                          
+                                           <a href="MostrarJuego.html?idJuego=${element.id}" >
                                            <li>
                                            <div class="divImagen">
                                               <img src=${element.foto} alt="">
-                                              <label id="label1" for="imagen">${element.nombre}</label>
+                                              <label id="label1" for="imagen" >ID: ${element.id}</label><br>
+                                              <label id="label1" for="imagen">${element.nombre}</label><br>
                                               <label id="label1" for="imagen">Q.${element.precio}</label>
+
                                             </div>  
                                             </li>
-                                            
+                                          </a>
                                           `
-
+                                        }
            });
-          mostrarOpcion()
-
+           
+           mostrarOpcion()
         })
-
       }
 
-      //Funcion para agregar a las opciones 
 
       function mostrarOpcion(){
         fetch("http://127.0.0.1:9000/mostrarOpcion",{

@@ -12,7 +12,7 @@
     <div id="header">
       <div>
        
-          <a class="boton2" href="index.html">Cerrar Sesion</a>
+          <a class="boton2"  href="index.html">Cerrar Sesion</a>
           
         
       </div>
@@ -25,9 +25,8 @@
 
         <div id="menu">
           <ul>
-            <li ><a href="Principal.html">Inicio</a></li>
+            <li ><a href="Principal3.html">Inicio</a></li>
 
-            <li ><a href="registro.html">Registrarse</a></li>
             <li ><a href="">Contatacto</a></li>
           </ul>
         </div>
@@ -53,6 +52,7 @@
             </select>
 
             <input for="texto" type="text" placeholder="Buscar"> 
+            <button id="botonBuscar">Buscar</button>
         </div>
           </div>
           
@@ -66,24 +66,19 @@
       <div id="centro3">
         <div id="menu2">
           <ul>
-            <li ><a href="Catalogo.html">Catalogo de videojuegos</a></li>
-
-            <li ><a href="">Mi biblioteca</a></li>
-            <li ><a href="mostrarUsuarios.html">Perfil</a></li>
-            <li ><a href="CargarMasiva.html">Carga Masiva</a></li>
-            <li ><a href="">CRUD de videojuegos </a></li>
-            <li ><a href="">Generar Reportes </a></li>
-            <li ><a href="CrearUsuario.html">Crear usuario </a></li>
+            <li ><a href="CatalogoNo.html">Catalogo de videojuegos</a></li>
+            
+           
           </ul>
         </div>
       </div>
     </div>
 
-  
     <div id="prueba" >
       <ul id="prueba2">
       </ul>
     </div>
+
     <script>
       function obtenerImagenes(){
 
@@ -101,25 +96,28 @@
           var imagenes= response
           console.log(imagenes)
           var colocarImagenes= document.querySelector('#prueba #prueba2')
-           imagenes.slice(0,4).forEach(element => {
+           imagenes.forEach(element => {
              console.log(element.foto)
              colocarImagenes.innerHTML+=`
                                           
-                                          
+                                           <a href="mostrarJuegosN.html?idJuego=${element.id}" >
                                            <li>
                                            <div class="divImagen">
                                               <img src=${element.foto} alt="">
-                                              <label id="label1" for="imagen">${element.nombre}</label>
+                                              <label id="label1" for="imagen" >ID: ${element.id}</label><br>
+                                              <label id="label1" for="imagen">${element.nombre}</label><br>
                                               <label id="label1" for="imagen">Q.${element.precio}</label>
+
                                             </div>  
                                             </li>
-                                            
+                                          </a>
                                           `
 
            });
         })
       }
     </script>
+
 </body>
 
 

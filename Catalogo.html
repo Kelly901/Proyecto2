@@ -99,9 +99,10 @@
         })
         .then(response =>{
           var imagenes= response
+          
           console.log(imagenes)
           var colocarImagenes= document.querySelector('#prueba #prueba2')
-           imagenes.slice(0,4).forEach(element => {
+           imagenes.forEach(element => {
              console.log(element.foto)
              colocarImagenes.innerHTML+=`
                                           

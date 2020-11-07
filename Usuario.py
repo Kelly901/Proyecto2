@@ -10,4 +10,4 @@ class Usuario:
     	self.confir_contraseña=confir_contraseña
     	self.tipo=tipo
     	
-    
+     

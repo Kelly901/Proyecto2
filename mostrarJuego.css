@@ -352,8 +352,176 @@ color: black;
     
 
 }
-#prueba #archivo{
-	font-size: 18px;
-	border-radius: 7px;
-	
+
+#cuerpo{
+    width: 100%;
+   
 }
+
+#cuerpo #mostrarBanner #banner{
+    width: 1000px;
+    height: 300px;
+    margin: 20px 200px;
+}
+#cuerpo  #mostrarImagen {
+    width: 600px;
+    float: left;
+}
+#cuerpo  #mostrarImagen h1 {
+    margin: 20px 200px;
+}
+
+#cuerpo  #mostrarImagen #imagen{
+    width: 200px;
+    height: 250x;
+    margin: 20px 300px;
+}
+#cuerpo  #mostrarInfo {
+    width: 600px;
+    margin: 20px 500px;
+    
+}
+#cuerpo  #mostrarInfo #categorias {
+    font-size: 18px;
+    color: rgb(3, 37, 37)
+}
+#cuerpo  #mostrarInfo #precio {
+    font-size: 25px;
+    color: rgb(11, 36, 36) 
+    
+}
+
+#cuerpo  #mostrarInfo #descripcion {
+    font-size: 18px;
+    color: rgb(3, 14, 14) 
+}
+#linea2{
+	width: 100%;
+	height: 10px;
+	background:#16b8b8;
+
+}
+#comentarios{
+   float: left;
+    width: 100%;
+    color: rgb(3, 14, 14) 
+}
+#comentarios #tabla{
+margin: 50px 100px; 
+width: 1000px;
+}
+#comentarios  #CajaComentario{
+   
+    border: solid 3px rgb(1, 31, 31);
+    float: right;
+    margin: 60px 100px;
+    
+ }
+ #comentarios #botonAgregar{
+    width: 150px;
+    height: 40px;
+    font-size: 17px;
+    float: right;
+    margin: 400px -230px;
+   background: #000;
+   border-radius: 7px;
+   color: #00b7f8;
+    
+ }
+
+
+
+#comentarios #botonAgregar[type="button"]:hover{
+    background: #0096f7;
+    color: black;
+
+}
+
+#comentarios  #botonAgregar[type="button"]:active{
+   
+    border-bottom: 1px solid #0045A6;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+
+}
+
+#comentarios #tabla #tablita tr th{
+   width: 25%;
+   height: 25%;
+   margin: 20px 30px;
+   color: blue;
+   text-align: left;
+}
+#comentarios #tabla #tablita tr #fecha{
+    width: 25%;
+    height: 25%;
+    margin: 20px 30px;
+    color: rgb(36, 41, 41);
+    font-size: 16px;
+    text-align: left;
+    font: small-caps 100%/200% serif;
+ }
+#comentarios #tabla #tablita tr #nombre{
+    width: 25%;
+    height: 25%;
+    margin: 20px 30px;
+    color: rgb(10, 158, 158);
+    font-size: 18px;
+    text-align: left;
+    font: oblique bold 120% normal;
+ }
+
+#comentarios #tabla #tablita tr #com1{
+    width: 25%;
+    height: 25%;
+    margin: 20px 30px;
+    color: rgb(8, 117, 117);
+    font-size: 17px;
+    text-align: left;
+    font: small-caps 90% serif;
+ }
+
+
+#comentarios #tabla #tablita tr #com{
+    width: 25%;
+    height: 25%;
+    margin: 20px 30px;
+    color: black;
+    font-size: 20px;
+    text-align: left;
+    font: small-caps 100% serif;
+ }
+
+
+#comentarios #tabla #tablita tr{
+    width: 25%;
+    height: 25%;
+    margin: 40px 30px;
+   
+ }
+#cuerpo  #mostrarInfo #agregarBiblio{
+    width: 150px;
+    height: 40px;
+    font-size: 17px;
+   background: #000;
+   border-radius: 7px;
+   color: #00b7f8;
+}
+#cuerpo  #mostrarInfo #agregarBiblio[type="button"]:hover{
+    background: #0096f7;
+    color: black;
+
+}
+#cuerpo  #mostrarInfo #agregarBiblio[type="button"]:active{
+    border-bottom: 1px solid #0045A6;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+}
+
+
+

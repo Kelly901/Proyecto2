@@ -53,15 +53,17 @@
                 window.alert("ocurrio un error, ver consola")
             })
        .then(response =>{
+         
          if(response.estado == "0"){
           window.alert("El usario no ha sido encontrado")
          }else{
           window.alert("Bienvenido "+response.nombre)
-
+          window.alert(response.id)
+          sessionStorage.setItem("id",response.id)
           if(response.tipo=="admin"){ 
             location.href="Principal.html"
           }else{
-            location.href="Principal2.html"
+            location.href="Principal2.html "
           }
 
         }

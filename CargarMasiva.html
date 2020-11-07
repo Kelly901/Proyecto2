@@ -6,13 +6,13 @@
     <title>Pagina principal</title>
     <link rel="stylesheet" type="text/css" href="principal.css">
 </head>
-<body onload="obtenerImagenes()">
+<body >
     
     <div id="linea"></div>
     <div id="header">
       <div>
        
-          <a class="boton2" href="index.html">Cerrar Sesion</a>
+          <a class="boton2" href="Principal3.html">Cerrar Sesion</a>
           
         
       </div>
@@ -81,44 +81,67 @@
 
   
     <div id="prueba" >
-      <ul id="prueba2">
-      </ul>
+      <h1>Carga Masiva de videojuegos</h1><br>
+       <label for="texto">Selecionar archivos -></label>
+      <input type="file" name="" id="archivo">
+      <p id="menssage"></p>
     </div>
     <script>
-      function obtenerImagenes(){
+        var variable=""
+        function abrirArchivo(evento){
+            let archivo=evento.target.files[0];
+            if(archivo){
+                let reader= new FileReader();
 
-        fetch("http://127.0.0.1:9000/imagen",{
-          method:'GET',
-          headers:{
-            'Content-Type': 'application/json'
-          }
-          
-        }).then(res=> res.json())
-        .catch(err=> {
-          console.log(err)
-        })
-        .then(response =>{
-          var imagenes= response
-          console.log(imagenes)
-          var colocarImagenes= document.querySelector('#prueba #prueba2')
-           imagenes.slice(0,4).forEach(element => {
-             console.log(element.foto)
-             colocarImagenes.innerHTML+=`
-                                          
-                                          
-                                           <li>
-                                           <div class="divImagen">
-                                              <img src=${element.foto} alt="">
-                                              <label id="label1" for="imagen">${element.nombre}</label>
-                                              <label id="label1" for="imagen">Q.${element.precio}</label>
-                                            </div>  
-                                            </li>
-                                            
-                                          `
+                reader.onload=function(e){
+                    let contenido=e.target.result;
+                    
+                    
+                    variable=contenido
+                    console.log(variable)
+                    devolverContenido(variable)
+                };
+                try{
+                    reader.readAsText(archivo); 
+                }catch(error){
+                    console.log("error")
+                }
+               
+            }else{
+                document.getElementById('menssage').innerText='NOSE HA SELECCIONADO NINGUN ARCHIVO';
+            }
+        }
+        window.addEventListener('load',()=>{
+            document.getElementById('archivo').addEventListener('change',abrirArchivo);
 
-           });
-        })
-      }
+        });
+
+        function devolverContenido(cont){
+       var obtenerContenido = cont
+       
+       //var estado='1'
+       fetch('http://127.0.0.1:9000/cargaMasiva',{
+         method : 'POST',
+         headers: {
+          'Content-Type': 'application/json'
+         },
+         body:JSON .stringify({
+           "contenido" : obtenerContenido
+           
+         })
+         
+       })
+       .then(res=> res.json())
+       .catch(err =>{
+                console.error('Error', err)
+                window.alert("ocurrio un error, ver consola")
+            })
+       .then(response =>{
+         console.log("Listo")
+         window.alert("Carga realizada con exito")
+         
+       })
+     }
     </script>
 </body>
 

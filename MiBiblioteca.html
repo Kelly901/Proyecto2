@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <title>Biblioteca</title>
     <link rel="stylesheet" type="text/css" href="principal.css">
 </head>
-<body onload="obtenerImagenes()">
+<body onload="mostrarBibloteca()">
     
     <div id="linea"></div>
     <div id="header">
@@ -34,7 +34,6 @@
       </div>
 
     </div>
-
     <div id="presentacion">
       <div id="centro2">
         <div id="izquierda">
@@ -45,12 +44,12 @@
         <div id="derecha">
           <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
           <div id="categoria">
-            <select name="producto" id="miselect">
+            <select id="miselect">
               
             </select>
 
             <input id="buscar1" for="texto" type="text" placeholder="Buscar"> 
-           
+            
         </div>
           </div>
           
@@ -72,16 +71,16 @@
         </div>
       </div>
     </div>
-    
+
     <div id="prueba" >
       <ul id="prueba2">
       </ul>
     </div>
 
     <script>
-      function obtenerImagenes(){
-
-        fetch("http://127.0.0.1:9000/imagen",{
+      function mostrarBibloteca(){
+        var idU = sessionStorage.getItem("id")
+        fetch("http://127.0.0.1:9000/mostrarBibloteca",{
           method:'GET',
           headers:{
             'Content-Type': 'application/json'
@@ -95,30 +94,33 @@
           var imagenes= response
           console.log(imagenes)
           var colocarImagenes= document.querySelector('#prueba #prueba2')
-           imagenes.slice(0,4).forEach(element => {
+
+          if (imagenes==null){
+              console.log("no hay nada")
+          }else{
+           imagenes.forEach(element => {
+
+            if (idU == element.idU) {
              console.log(element.foto)
              colocarImagenes.innerHTML+=`
-                                          
-                                          
                                            <li>
                                            <div class="divImagen">
                                               <img src=${element.foto} alt="">
-                                              <label id="label1" for="imagen">${element.nombre}</label>
-                                              <label id="label1" for="imagen">Q.${element.precio}</label>
+                                              <label id="label1" for="imagen">${element.nombre}</label><br>
+                                              
+
                                             </div>  
                                             </li>
-                                            
+                                          
                                           `
-
+            }
            });
+          }
           mostrarOpcion()
-
         })
-
       }
 
-      //Funcion para agregar a las opciones 
-
+      //Agregar al seleted
       function mostrarOpcion(){
         fetch("http://127.0.0.1:9000/mostrarOpcion",{
           method:'GET',

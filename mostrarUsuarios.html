@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principal</title>
+    <link rel="stylesheet" type="text/css" href="usuarios.css">
+</head>
+<body onload="mostrarClientes()">
+    
+    <div id="linea"></div>
+    <div id="header">
+      <div>
+       
+          <a class="boton2" href="index.html">Cerrar Sesion</a>
+          
+        
+      </div>
+      <div id="centro1">
+        
+        <div id=logo>
+          <h2>Tienda de juegos</h2>
+          <p>Diversión sin límite</p>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li ><a href="Principal.html">Inicio</a></li>
+
+            <li ><a href="registro.html">Registrarse</a></li>
+            <li ><a href="">Contatacto</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    <div id="presentacion">
+      <div id="centro2">
+        <div id="izquierda">
+           <h2>Bienvenidos a game store</h2>
+          <p class="decripcion-pres">La tienda virtual mas grande de video juegos</p>
+          <button class="boton">Mas informacion</button>
+        </div>
+        <div id="derecha">
+          <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
+          <div id="categoria">
+            <select id="miselect">
+              <option value="">Sleeciona</option>
+              <option value="1">valor1</option>
+              <option value="2">valor2</option>
+              <option value="3">valor3</option>
+            </select>
+
+            <input for="texto" type="text" placeholder="Buscar"> 
+        </div>
+          </div>
+          
+
+      </div>
+      
+    </div>
+
+    <div id="menuU">
+
+      <div id="centro3">
+        <div id="menu2">
+          <ul>
+            <li ><a href="Catalogo.html">Catalogo de videojuegos</a></li>
+
+            <li ><a href="">Mi biblioteca</a></li>
+            <li ><a href="mostrarUsuarios.html">Perfil</a></li>
+            <li ><a href="CargarMasiva.html">Carga Masiva</a></li>
+            <li ><a href="">CRUD de videojuegos </a></li>
+            <li ><a href="">Generar Reportes </a></li>
+            <li ><a href="CrearUsuario.html">Crear usuario </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+ 
+    <div id="prueba" >
+      <div id="modificar">
+        <h2> Modificar Usuario</h2>
+        <div id="formulario">
+
+          <label for="nombre">Nombre</label><br>
+        <input id="nombre" type="text" placeholder="Nombre">
+        
+        <label id="ap" for="apellido">Apellido</label><br>
+        <input id="apellido" type="text" placeholder="Apellido">
+        
+  
+        <label for="username">Nombre de usuario</label>
+        <input id="usuario" type="text" placeholder="Usuario">
+        
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="contraseña">
+  
+      
+       
+        </div>
+      </div>
+      
+      <ul id="prueba2">
+       
+      </ul>
+    </div>
+    <script>
+      var variable =""
+      function mostrarClientes(){
+
+        fetch("http://127.0.0.1:9000/mostrarClientes",{
+          method:'GET',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response =>{
+          var clientes= response
+          console.log(clientes)
+          var colocarCliente= document.querySelector('#prueba #prueba2')
+           clientes.forEach(element => {
+             console.log(element.usuario)
+             var cont=0
+            
+             colocarCliente.innerHTML+=`
+             <img id="avatar" src="https://img2.freepng.es/20180320/tqe/kisspng-blue-aqua-sky-circle-apps-user-online-5ab0fef8a88f41.0030934515215490486904.jpg" alt="">
+                                          
+                                           <li>
+                                           
+                                           <div class="divImagen">
+                                           
+                                            <label id="label1" for="imagen">Id: ${element.id}</label><br>
+                                            
+                                              <label id="label2" for="imagen">Nombre: ${element.nombre}</label><br>
+                                              <label id="label3" for="imagen">Apellido: ${element.apellido}</label><br>
+                                              <label id="label4" for="imagen">Usuario: ${element.usuario}</label><br>
+                                              <label id="label5" for="imagen">Contraseña: ${element.contrasena}</label>
+
+                                              <button id="boton${variable=element.id}" type="button" onclick="modificarUsuario(${variable=element.id}) ">Modificar ${element.id}</button>
+                                            </div>  
+                                            </li>
+                                            
+                                          `
+                                                                        
+           });
+           
+        })
+      }
+      
+     
+   
+      function modificarUsuario(ids){
+        window.alert(ids)
+      var obtenerId =ids
+      
+      var nombre = document.getElementById("nombre").value
+      var apellido = document.getElementById("apellido").value
+      var usuario= document.getElementById("usuario").value
+      var password= document.getElementById("password").value
+      
+        fetch("http://127.0.0.1:9000//modificarUsuario",{
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+         body:JSON .stringify({
+           "id" : obtenerId,
+           "nombre": nombre,
+           "apellido":apellido,
+           "usuario":usuario,
+           "contrasena":password
+         })
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response=>{
+         
+          
+          if(response.estado=="0"){ 
+            window.alert("El Usuario Ya existe")
+          }else{
+            window.alert("Cambio realizado ")
+            location.href="mostrarUsuarios.html"
+          }
+        })
+      }
+    </script>
+</body>
+
+
+</html>
