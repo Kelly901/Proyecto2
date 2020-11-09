@@ -15,9 +15,6 @@ CORS(app)
 miUsuario=[]
 
 us=Autenticacion()
-us.crearUsuario("Usuario","Maestro","admin","admin","admin")
-us.crearUsuario("Kelly","km","s2","123","123")
-us.crearUsuario("Usuario2","sus","usuario2","123","123")
 
 us.listar()
 
