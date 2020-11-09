@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina principal</title>
-    <link rel="stylesheet" type="text/css" href="principal.css">
+    <link rel="stylesheet" type="text/css" href="crearJuego.css">
   
 </head>
 <body onload="mostrarOpcion()">
@@ -20,7 +20,7 @@
       <div id="centro1">
         
         <div id=logo>
-          <h2>World Games Store</h2>
+          <h2>World Games Stores</h2>
           <p>Diversión sin límite</p>
         </div>
 
@@ -77,62 +77,74 @@
       </div>
     </div>
 
-    <div id="prueba">
-      <ul>
-        <li>
-          
-        </li>
-
-      </ul>
-    </div>
-    <h1>Creación de usuarios</h1>
+  
+    <h1 style="text-align: center; color: rgb(9, 54, 54); font-style: italic; font-weight: 900;">Creación de Juegos</h1>
     <div class="login">
         <img class= "avatar" src="https://i.pinimg.com/originals/99/93/42/999342d769a12d42032cd65561d5cd3f.jpg" alt="imagen de fono">
-        <h1>Crear usuario</h1>
+        <h1>Crear juegos</h1>
         <form >
           <label for="nombre">Nombre</label>
           <input id="nombre" type="text" placeholder="Nombre"><br>
           
-          <label for="apellido">Apellido</label>
-          <input id="apellido" type="text" placeholder="Apellido">
+          <label for="anio">Añio</label>
+          <input id="anio" type="text" placeholder="Añio">
           
     
-          <label for="username">Nombre de usuario</label>
-          <input id="usuario" type="text" placeholder="Usuario">
+          <label for="precio">Precio</label>
+          <input id="precio" type="text" placeholder="Precio">
           
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="contraseña">
+          <label for="categoria1">Categoria1</label>
+          <input id="categoria1" type="text" placeholder="Categoria1">
     
-          <label for="password">Confirmar Password</label>
-          <input id="confirmar_password" type="password" placeholder="Confirmar contraseña">
+          <label for="categoria2">Categoria2</label>
+          <input id="categoria2" type="text" placeholder="Categoria2">
     
-    
-          <button type="button" onclick="crear_usuario()">Crear</button>
+          <label for="categoria3">Categoria3</label>
+          <input id="categoria3" type="text" placeholder="Categoria3">
+
+          <label for="genero3">Foto</label>
+          <input id="foto" type="text" placeholder="Ruta de la foto">
+
+          <label for="banner">Banner</label>
+          <input id="banner" type="text" placeholder="Ruta del banner">
+
+          <label for="descripcion">Descripcion</label>
+          <input id="descripcion" type="text" placeholder="Descripcion">
+
+          <button type="button" onclick="crearJuego()">Crear Juego</button>
  
          
         </form>
       </div>
 
       <script>
-        function crear_usuario()
+        function crearJuego()
        {
          var nombre = document.getElementById("nombre").value
-         var apellido= document.getElementById("apellido").value
-         var usuario= document.getElementById("usuario").value
-         var password= document.getElementById("password").value
-         var confirmar_password= document.getElementById("confirmar_password").value
+         var anio= document.getElementById("anio").value
+         var precio= document.getElementById("precio").value
+         var categoria1= document.getElementById("categoria1").value
+         var categoria2= document.getElementById("categoria2").value
+         var categoria3= document.getElementById("categoria3").value
+         var foto= document.getElementById("foto").value
+         var banner= document.getElementById("banner").value
+         var descripcion= document.getElementById("descripcion").value
          //var estado='1'
-         fetch('http://127.0.0.1:9000/crear_usuario',{
+         fetch('http://127.0.0.1:9000//crearJuego',{
            method : 'POST',
            headers: {
             'Content-Type': 'application/json'
            },
            body:JSON .stringify({
              "nombre" : nombre,
-             "apellido" : apellido,
-             "usuario" : usuario,
-             "password" : password,
-             "confirmar_password": confirmar_password
+             "anio":anio,
+             "precio":precio,
+             "categoria1":categoria1,
+             "categoria2":categoria2,
+             "categoria3":categoria3,
+             "foto":foto,
+             "banner":banner,
+             "descripcion":descripcion
            })
            
          })
@@ -143,9 +155,9 @@
               })
          .then(response =>{
            if(response.estado == "0"){
-            window.alert("El usuario ya existe o la contraseña es incorrecta")
+            window.alert("El juego ya existe")
            }else{
-            window.alert("Usuario creado con exito")
+            window.alert("Juego creado con exito")
            }
            
          })

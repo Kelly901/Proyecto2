@@ -1,4 +1,6 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,render_template,make_response
+import pdfkit
+from jinja2 import Environment,FileSystemLoader
 from Autenticacion import Autenticacion
 from AutenticacioJuego import AutenticacionJuego
 from Juego import Juego
@@ -309,8 +311,86 @@ def mostrarOpcion():
 	gen=jsonify(generos)
 		
 	return gen
+#Crear Juego
+
+@app.route("/crearJuego",methods=['POST'])
+def crearJuego():
+	nombre =request.json['nombre']
+	anio =request.json['anio']
+	precio =request.json['precio']
+	categoria1 =request.json['categoria1']
+	categoria2 =request.json['categoria2']
+	categoria3 =request.json['categoria3']
+	foto =request.json['foto']
+	banner=request.json['banner']
+	descripcion =request.json['descripcion']
+	if var.crearJuego2(nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion)==True:
+		return var.dump2(nombre)
+	return {
+		'estado':'0'
+	}
+#mostrar juego
+@app.route("/mostrarJuego2",methods=['GET'])
+def mostrarJuego2():
+
+	biblioteca=[]
+	for u in AutenticacionJuego.juego:
+		biblio={
+				'id':u.id,
+				'nombre':u.nombre,
+				'anio':u.anio,
+				'precio':u.precio,
+				'categoria1':u.categoria1,
+				'categoria2':u.categoria2,
+				'categoria3':u.categoria3,
+				'foto':u.foto,
+				'banner':u.banner,
+				'descripcion':u.descripcion
+				
+				}
+		biblioteca.append(biblio)
+	
+	bibl=jsonify(biblioteca)
+		
+	return bibl	
+#app
+@app.route("/modificarJuego",methods=['POST'])	
+def modificarJuegod():
+	id=request.json['id']
+	nombre =request.json['nombre']
+	anio =request.json['anio']
+	precio =request.json['precio']
+	categoria1 =request.json['categoria1']
+	categoria2 =request.json['categoria2']
+	categoria3 =request.json['categoria3']
+	foto =request.json['foto']
+	banner=request.json['banner']
+	descripcion =request.json['descripcion']
+
+
+
+	if var.modificarJuego(id,nombre,anio,precio,categoria1,categoria2,categoria3,foto,banner,descripcion)==True:
+
+		return{
+			'estado':'1'
+		}
+	return{
+		'estado':'0'
+	}	
+
+#Eliminar
+@app.route("/eliminar",methods=['POST'])	
+def elminar():
+	id=request.json['id']
+	var.eliminar(int(id))
+
+	return "1"
+
+#Crear Pdf
+
 
 #principal
+
 @app.route("/")
 def index():
 	if var.dump(id)==True:

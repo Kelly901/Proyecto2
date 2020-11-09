@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina principal</title>
+  <script type="text/javascript" src="jspdf.min.js"></script>
+
+<script src="https://unpkg.com/jspdf-autotable"></script>
+<script type="text/javascript" src="jspdf.debug.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin"></script>
+  <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>   
+  <link rel="stylesheet" type="text/css" href="principal.css">
+</head>
+
+<body onload="mostrarOpcion()" style="background-color: black;">
+
+  <div id="linea"></div>
+  <div id="header">
+    <div>
+
+      <a class="boton2" href="Principal3.html">Cerrar Sesion</a>
+
+
+    </div>
+    <div id="centro1">
+
+      <div id=logo>
+        <h2>World Games Store</h2>
+        <p>Diversión sin límite</p>
+      </div>
+
+      <div id="menu">
+        <ul>
+          <li><a href="Principal.html">Inicio</a></li>
+
+          <li><a href="registro.html">Registrarse</a></li>
+          <li><a href="">Contatacto +502 101010</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+  <div id="presentacion">
+    <div id="centro2">
+      <div id="izquierda">
+        <h2>Bienvenidos a World Games Store</h2>
+        <p class="decripcion-pres">La tienda virtual mas grande de video juegos</p>
+        <button class="boton">Mas informacion</button>
+      </div>
+      <div id="derecha">
+        <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
+        <div id="categoria">
+          <select id="miselect">
+            
+          </select>
+
+          <input id="buscar1" for="texto" type="text" placeholder="Buscar">
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div id="menuU">
+    
+    <div id="centro3">
+      <div id="menu2">
+        <ul>
+          <li><a href="Catalogo.html">Catalogo de videojuegos</a></li>
+
+          <li><a href="BibliotecaAdmin.html">Mi biblioteca</a></li>
+          <li><a href="mostrarUsuarios.html">Perfil</a></li>
+          <li><a href="CargarMasiva.html">Carga Masiva</a></li>
+          <li><a href="Crud.html">CRUD de videojuegos </a></li>
+          <li><a href="Crud.html">Generar Reportes </a></li>
+          <li><a href="CrearUsuario.html">Crear usuario </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="repU" style="margin: 10px 390px;" >
+    <h1 style="color: white;text-align: center;">Reporte de video Juegos</h1>
+    <button id="generarU" type="button">Generar PDF</button>
+    <div id="tab">
+      
+    <table id="tablita" class="tablaU">
+        <thead>
+            <tr >
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Usuario</th>
+                <th>Contraseña</th>
+
+            </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+    </table>
+  </div>
+  </div>
+
+  <script>
+
+    //Agrega al selected
+    function mostrarOpcion() {
+      fetch("http://127.0.0.1:9000/mostrarOpcion", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+      }).then(res => res.json())
+        .catch(err => {
+          console.log(err)
+        })
+        .then(response => {
+          var genero = response
+          console.log(genero)
+          var colocarGenero = document.querySelector('#presentacion #centro2 #derecha #categoria #miselect')
+          var colocarBoton = document.querySelector('#presentacion #centro2 #derecha #categoria')
+
+          genero.forEach(element => {
+
+            colocarGenero.innerHTML += ` 
+                                          <option id ="opcion"value="${element.genero}">${element.genero}</option>
+                                            
+                                        `
+
+
+          });
+
+          var opcion = document.getElementById('opcion').value
+          console.log(opcion)
+          colocarBoton.innerHTML += `
+                                     <button id="botonBuscar" type="button" onclick="activarBoton()">Buscar</button>
+                                   `
+                                   mostrarUsuarios ()
+        })
+
+
+    }
+
+    function activarBoton() {
+
+      var buscar = document.getElementById('buscar1').value
+      var variable = document.getElementById('miselect').value
+
+      if (buscar == "") {
+        location.href = "MostrarPorGeneroAdmin.html?idGenero=" + variable
+      } else {
+        location.href = "MostrarPorGeneroAdmin.html?idGenero=" + buscar
+      }
+
+
+
+    }
+
+    function mostrarUsuarios () {
+      fetch("http://127.0.0.1:9000/mostrarClientes", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+      }).then(res => res.json())
+        .catch(err => {
+          console.log(err)
+        })
+        .then(response => {
+          var datos= response
+          console.log(datos)
+          var colocarDatos = document.querySelector('#cuerpo')
+         
+          datos.forEach(element => {
+
+            colocarDatos.innerHTML += ` <tr >
+                                    <td>${element.id}</td>
+                                    <td>${element.nombre}</td>
+                                    <td>${element.apellido}</td>
+                                    <td>${element.usuario}</td>
+                                    <td>${element.contrasena}</td>
+                                    
+                                    </tr>          
+                                        `
+
+
+          });
+
+          
+        })
+
+    }
+
+  
+
+  </script>
+     <script type="text/javascript">
+      $(document).ready(function() {
+        var special={
+          "#editor":function(element,renderer){
+            return true;
+        }
+        };
+        $("#generarU").click(function(){
+            var doc= new jsPDF();
+            
+
+          doc.autoTable({html:'#tablita'})
+          doc.text(10,10,"Reporte de Usuarios");
+        
+            
+            doc.save("Usuarios.pdf");
+        });
+      });
+    </script>
+</body>
+
+
+</html>

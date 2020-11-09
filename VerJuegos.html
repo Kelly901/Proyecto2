@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principal</title>
+    <link rel="stylesheet" type="text/css" href="verJuego.css">
+</head>
+<body onload="mostrarClientes()">
+    
+    <div id="linea"></div>
+    <div id="header">
+      <div>
+       
+          <a class="boton2" href="Principal3.html">Cerrar Sesion</a>
+          
+        
+      </div>
+      <div id="centro1">
+        
+        <div id=logo>
+          <h2>World Games Store</h2>
+          <p>Diversión sin límite</p>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li ><a href="Principal.html">Inicio</a></li>
+
+            <li ><a href="registro.html">Registrarse</a></li>
+            <li ><a href="">Contacto +502 10101010</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    <div id="presentacion">
+      <div id="centro2">
+        <div id="izquierda">
+           <h2>Bienvenidos a World Games Store</h2>
+          <p class="decripcion-pres">La tienda virtual mas grande de video juegos</p>
+          <button class="boton">Mas informacion</button>
+        </div>
+        <div id="derecha">
+          <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
+          <div id="categoria">
+            <select id="miselect">
+              
+            </select>
+
+            <input id="buscar1" for="texto" type="text" placeholder="Buscar"> 
+        </div>
+          </div>
+          
+
+      </div>
+      
+    </div>
+
+    <div id="menuU">
+
+      <div id="centro3">
+        <div id="menu2">
+          <ul>
+            <li ><a href="Catalogo.html">Catalogo de videojuegos</a></li>
+
+            <li ><a href="BibliotecaAdmin.html">Mi biblioteca</a></li>
+            <li ><a href="mostrarUsuarios.html">Perfil</a></li>
+            <li ><a href="CargarMasiva.html">Carga Masiva</a></li>
+            <li ><a href="Crud.html">CRUD de videojuegos </a></li>
+            <li ><a href="GenerarReportes.html">Generar Reportes </a></li>
+            <li ><a href="CrearUsuario.html">Crear usuario </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+ 
+    <div id="prueba" >
+      <div id="modificar">
+        <h2> Modificar Juego</h2>
+        <div id="formulario">
+
+          <label for="nombre">Nombre del Juego</label><br>
+        <input id="nombre1" type="text" placeholder="Nombre">
+        
+        <label id="ap" for="apellido">Añio</label><br>
+        <input id="anio" type="text" placeholder="Añio">
+        
+  
+        <label for="username">Precio</label>
+        <input id="precio" type="text" placeholder="Precio">
+        
+        <label for="username">Categoria</label>
+        <input id="categoria1" type="text" placeholder="categoria1">
+
+        <label for="username">Categori2</label>
+        <input id="categoria2" type="text" placeholder="Categoria2">
+
+        <label for="username">Categoria3</label>
+        <input id="categoria3" type="text" placeholder="categoria3">
+
+       
+        <label for="username">Foto</label>
+        <input id="foto" type="text" placeholder="Foto">
+        
+        <label for="username">Banner</label>
+        <input id="banner" type="text" placeholder="Banner">
+
+        
+        <label for="username">Descripcion</label>
+        <input id="descripcion" type="text" placeholder="Descripcion">
+        <button id="mod" type="button" onclick="modificarJuego()">Modificar</button>
+        <button id="eliminar" type="button" onclick="eliminarJuego()">Eliminar</button>
+        </div>
+      </div>
+      
+      <ul id="prueba2">
+       
+      </ul>
+    </div>
+    <script>
+ 
+      function mostrarClientes(){
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('idNombre')  
+        
+        fetch("http://127.0.0.1:9000/imagen",{
+          method:'GET',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response =>{
+          var imagenes= response
+          console.log(imagenes)
+          var colocarImagenes= document.querySelector('#prueba #prueba2')
+          var colocarNombre=document.querySelector('#prueba #modificar #formulario #nombre1')
+          
+           imagenes.forEach(element => {
+            if(element.id==id){
+               
+             console.log(element.foto)
+             colocarNombre.innerHTML=`${element.nombre}`
+             
+             colocarImagenes.innerHTML+=`
+                                          
+                                        
+                                           <li>
+
+                                           <div class="divImagen">
+                                            <h1 style="color: aqua;float: left;">ID:${element.id}</h1>
+                                            <h1 style="color: #64f5f0;">${element.nombre}</h1>
+                                              <img id="banner1" src=${element.banner} alt=""><br>
+                                              <h1 style="color: aqua;float: left; margin:10px 10px;">Foto:</h1>
+                                              
+                                              <img id="foto" src=${element.foto} alt="">
+                                              <h1 style="color: white;">Precio: Q.${element.precio}</h1>
+                                              <h1 style="color: white;">Categoria1: ${element.categoria1}</h1>
+                                              <h1 style="color: white;">Categoria2: ${element.categoria2}</h1>
+                                              <h1 style="color: white;">Categoria3: ${element.categoria3}</h1>
+                                              <h2 style="color: aqua;">Descripción</h2>
+                                              <h3 style="color: white;"> ${element.descripcion}</h3>
+                                            </div>  
+                                            </li>
+                                          
+                                          `
+                                        }
+           });
+           
+           mostrarOpcion()
+        })
+
+      }
+      
+     
+   
+      function modificarJuego(){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('idNombre')  
+      
+      var nombre = document.getElementById("nombre1").value
+      var anio = document.getElementById("anio").value
+      var precio= document.getElementById("precio").value
+      var categoria1= document.getElementById("categoria1").value
+      var categoria2= document.getElementById("categoria2").value
+      var categoria3= document.getElementById("categoria3").value
+      var foto= document.getElementById("foto").value
+      var banner= document.getElementById("banner").value
+      var descripcion= document.getElementById("descripcion").value
+      
+        fetch("http://127.0.0.1:9000/modificarJuego",{
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+         body:JSON .stringify({
+            "id":id,
+           "nombre" : nombre,
+           "anio": anio,
+           "precio":precio,
+           "categoria1":categoria1,
+           "categoria2":categoria2,
+           "categoria3":categoria3,
+           "foto":foto,
+           "banner":banner,
+           "descripcion":descripcion
+         })
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response=>{
+         
+          
+          if(response.estado=="0"){ 
+            window.alert("El nombre del juego ya existe.")
+          }else{
+            window.alert("Cambio realizado ")
+            location.href = "VerJuegos.html?idNombre=" + id
+          }
+        })
+      }
+      //Agregar Opciones al selected
+        //
+       
+        function mostrarOpcion(){
+        fetch("http://127.0.0.1:9000/mostrarOpcion",{
+          method:'GET',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response =>{
+          var genero= response
+          console.log(genero)
+          var colocarGenero= document.querySelector('#presentacion #centro2 #derecha #categoria #miselect')
+          var colocarBoton=document.querySelector('#presentacion #centro2 #derecha #categoria')
+         
+           genero.forEach(element => {
+             
+              colocarGenero.innerHTML +=` 
+                                          <option id ="opcion"value="${element.genero}">${element.genero}</option>
+                                            
+                                        `
+                                                   
+            
+           });
+          
+           var opcion= document.getElementById('opcion').value
+           console.log(opcion)
+           colocarBoton.innerHTML +=`
+                                     <button id="botonBuscar" type="button" onclick="activarBoton()">Buscar</button>
+                                   `    
+        })
+
+      }
+
+      function activarBoton(){
+
+          var buscar=document.getElementById('buscar1').value
+           var variable=document.getElementById('miselect').value
+
+           if(buscar==""){
+            location.href="MostrarPorGeneroAdmin.html?idGenero="+variable
+           }else{
+            location.href="MostrarPorGeneroAdmin.html?idGenero="+buscar
+           }
+           
+           
+
+      }
+
+      function eliminarJuego(){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('idNombre') 
+        fetch("http://127.0.0.1:9000/eliminar",{
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+         body:JSON .stringify({
+            "id":id
+         })
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response=>{
+            location.href="Crud.html"
+          alert("Juego eliminado")
+          
+        })
+
+      }
+    </script>
+</body>
+
+
+</html>

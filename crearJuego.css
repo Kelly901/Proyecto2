@@ -2,7 +2,7 @@ body{
 	margin:0;
 	padding: 0;
 	font-family: 'calibri light';
-
+    
 }
 
 #linea{
@@ -232,7 +232,6 @@ font-size: 16px;
 }
 /*Ejemplo para Diego*/
 
-
 #prueba{
 	width: 100%;
 	height: auto; 
@@ -241,121 +240,80 @@ font-size: 16px;
 	float: none;
 	margin-top: 0px;
 	text-align: center;
-	background:linear-gradient(30deg,black,black,#1a1b1b,#353838,#0e0e0e);
-   
+}
+#prueba ul li{
+	display: inline-block;
+
 }
 
+.divImagen img{
+	
+	width: 300px;
+	height: 260px;
+	border: 3px solid #84f1f1;
+	
+	float: center;
 
-
-
+}
 
  .divImagen {
-	width: 500px;
-	height: 150px;
-	
-	float:center;
-	
-}
-#prueba #prueba2 #avatar{
-	width: 150px;
-	height: 100px;
+	width: 400px;
+	height: 350px;
 	margin: 8px 10px;
-	float:left;
-	
+	background:linear-gradient(30deg,rgb(139, 244, 252),#032e2e,#034141,rgb(12, 12, 12),black);
+	float:center;
 }
-#prueba #prueba2  li{
-	width: 800px;
-	height: 200px;
-	border-color:aqua;
-	border: 3px aqua solid;
-
-}
- #prueba #prueba2 li .divImagen #label1{
-	
-	font-size: 25px;
+ .divImagen #label1{
+	margin: 100px 100px;
+	font-size: 19px;
 	font-style: oblique;
-    color: white;
-	font-weight: 1000;
-	
-}
-#prueba #prueba2 li .divImagen #label2{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
-	
-}
-#prueba #prueba2 li .divImagen #label3{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
-	
-}
-#prueba #prueba2 li .divImagen #label4{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
-	
-}
-#prueba #prueba2 li .divImagen #label5{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
-	
+	color: white;
+	font-weight: 900;
 }
 
-#prueba #prueba2  li .divImagen button {
-	width:200px;
-	height: 70px;
-	margin: -20px -220px;
-	float: right;
-	font-size: 23px;
-	border-radius: 6px;
-	
-	
+/*parte del registro*/
+.login{
+    width: 500px;
+    height: 780px;
+	background:linear-gradient(30deg,#085f5f,#067777,#0d6363,black,black);
+    border: skyblue 5px solid;
+    color: #fff;
+    top: 110%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -35%);
+    box-sizing: border-box;
+    padding: 70px 30px;
 }
 
-.divImagen button :hover{
-	background: none;
-	color: #0b515b;
-	
-	border: 0;
+.login .avatar{
+    width: 100px;
+    height: 100px;
+    
+    position: absolute;
+    top: 15px;
+    left: calc(50% - 50%)
 }
-#prueba #modificar{
-	float: right;
+.login h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
 }
-#prueba #modificar h2{
-
-color :white;
-}
-#prueba #modificar #formulario{
-	width: 450px;
-	background-color: #16b8b8;
-	float: right;
-}
-#prueba #formulario label{
-	width: 500px;
-	margin: 0px -20px;
-	margin: 0;
-	padding: 0;
-	font-size: 20px;
+.login label{
+    margin: 0;
+    padding: 0;
     font-weight: bold;
     display: block;
 }
 
-#prueba #formulario input{
-	width: 80%;
+.login input{
+    width: 100%;
     margin-bottom: 20px;
+
 }
-#prueba #formulario input[type="text"],
-#prueba #formulario input[type="password"]{
+.login input[type="text"],
+.login input[type="password"]{
 border: none;
 border-bottom: 1px solid #000;
 
@@ -364,3 +322,39 @@ font-size: 16px;
 color: black;
 }
 
+.login button[type="button"]{
+    border: none;
+    outline: none;
+    width: 420px;
+    height: 40px;
+    background: black;
+    border-bottom: 5px solid skyblue;
+    box-shadow: 6px 6px 6px #999;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    transition: all o.2s ease 0s;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+}
+.login button[type="button"]:hover{
+    background: #0096f7;
+    
+}
+.login button[type="button"]:active{
+    box-shadow: 2px 2px 2px #777, 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #0045A6;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+
+}
+#prueba #archivo{
+	font-size: 18px;
+	border-radius: 7px;
+	
+}

@@ -247,87 +247,74 @@ font-size: 16px;
 
 
 
+#prueba #prueba2  li {
+	width: 815px;
+	height: auto;
+	
 
+	
+}
 
  .divImagen {
-	width: 500px;
-	height: 150px;
-	
-	float:center;
-	
-}
-#prueba #prueba2 #avatar{
-	width: 150px;
-	height: 100px;
-	margin: 8px 10px;
-	float:left;
-	
-}
-#prueba #prueba2  li{
-	width: 800px;
-	height: 200px;
+	width: 815px;
+    height: auto;
 	border-color:aqua;
 	border: 3px aqua solid;
+    
 
-}
- #prueba #prueba2 li .divImagen #label1{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
 	
 }
-#prueba #prueba2 li .divImagen #label2{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
-	
-}
-#prueba #prueba2 li .divImagen #label3{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
+#prueba #prueba2  li .divImagen #banner1{
+	width: 700px;
+	height: 300px;
+	margin: 5px 10px;
+	float: center;
 	
 }
-#prueba #prueba2 li .divImagen #label4{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
+#prueba #prueba2  li .divImagen #foto{
+	width: 200px;
+	height: 200px;
+	margin: 5px 10px;
+	float: left;
 	
 }
-#prueba #prueba2 li .divImagen #label5{
-	
-	font-size: 25px;
-	font-style: oblique;
-    color: white;
-	font-weight: 1000;
+#prueba #prueba2  li .divImagen #descripcion{
+	width: 310px;
+	height: auto;
+    color:white;
+    margin: 110px -160px;
+	float: left;
+	border-color:aqua;
+	border: 3px aqua solid;
+}
+
+#prueba #prueba2  li{
+	width: 800px;
+	height: auto;
 	
 }
 
-#prueba #prueba2  li .divImagen button {
-	width:200px;
-	height: 70px;
-	margin: -20px -220px;
+
+
+
+#prueba #prueba2  li .divImagen #boton {
+	width:130px;
+	height: 60px;
+	margin: 10px 90px;
 	float: right;
-	font-size: 23px;
+	font-size: 18px;
 	border-radius: 6px;
 	
 	
 }
 
-.divImagen button :hover{
+.divImagen #boton :hover{
 	background: none;
 	color: #0b515b;
 	
 	border: 0;
 }
+
 #prueba #modificar{
 	float: right;
 }
@@ -364,3 +351,38 @@ font-size: 16px;
 color: black;
 }
 
+#prueba #formulario #mod {
+	width:130px;
+	height: 60px;
+	margin: 10px auto;
+	float: center;
+	font-size: 18px;
+	border-radius: 6px;
+	
+	
+}
+
+#prueba #mod :hover{
+	background: none;
+	color: #0b515b;
+	
+	border: 0;
+}
+
+#prueba #formulario #eliminar {
+	width:130px;
+	height: 60px;
+	margin: 10px auto;
+	float: center;
+	font-size: 18px;
+	border-radius: 6px;
+	
+	
+}
+
+#prueba #eliminar :hover{
+	background: none;
+	color: #0b515b;
+	
+	border: 0;
+}

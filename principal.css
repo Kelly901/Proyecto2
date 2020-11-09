@@ -183,15 +183,7 @@ body{
 	border: 0;
 }
 
-int[type="text"]{
-border: none;
-border-bottom: 1px solid #fff;
-background: transparent;
-outline: none;
-height: 40px;
-color:#fff;
-font-size: 16px;
-}
+
 /*Menu principal*/
 #menuU{
 	width: 100%;
@@ -356,4 +348,288 @@ color: black;
 	font-size: 18px;
 	border-radius: 7px;
 	
+}
+
+#crud #crear{
+	width: 300px;
+    height: 40px;
+	background: rgb(3, 57, 66);
+	margin: 10px 38%;
+	border-bottom: 5px solid skyblue;
+	color: white;
+	font-size: 16px;
+	font-weight: bolder;
+}
+
+#crud #crear[type="button"]:hover{
+    background: #0096f7;
+
+}
+
+#crud #crear[type="button"]:active{
+    box-shadow: 2px 2px 2px #777, 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #0045A6;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+
+}
+
+
+
+
+
+#crud #modificar{
+	width: 300px;
+    height: 40px;
+	background: rgb(3, 57, 66);
+	margin: 10px 38%;
+	border-bottom: 5px solid skyblue;
+	color: white;
+	font-size: 16px;
+	font-weight: bolder;
+}
+
+#crud #modificar[type="button"]:hover{
+    background: #0096f7;
+
+}
+
+#crud #modificar[type="button"]:active{
+    box-shadow: 2px 2px 2px #777, 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #0045A6;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+}
+
+#crud  #verJuego{
+	width: 100px;
+    height: 40px;
+	background: rgb(4, 92, 87);
+	margin:0px -480px;
+	
+	color: rgb(2, 2, 2);
+	font-size: 16px;
+	font-weight: bolder;
+}
+
+#crud  #verJuego[type="button"]:hover{
+    background: #0fbbe6;
+
+}
+
+#crud  #bucarJ{
+	width: 200px;
+    height: 40px;
+	margin: 0px 500px ;
+}
+
+/*Generar Reportes*/
+#rep  #ReporteJ{
+	width: 480px;
+    height: 40px;
+	background:linear-gradient(30deg,#78c7f8,#5abaf1,#0c99eb,#032e47,rgb(3, 39, 58));
+	margin: 10px 32%;
+	
+	color: rgb(2, 12, 20);
+	font-size: 18px;
+	font-weight: bolder;
+	border-radius: 7px;
+}
+
+#rep  #ReporteJ[type="button"]:hover{
+    background: #0fbbe6;
+
+}
+#rep  #ReporteJ[type="button"]:active{
+    box-shadow: 2px 2px 2px rgb(19, 64, 71), 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #5973eb;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+}
+
+#rep  #ReporteU{
+	width: 480px;
+    height: 40px;
+	background:linear-gradient(30deg,#78c7f8,#5abaf1,#0c99eb,#032e47,rgb(3, 39, 58));
+	margin: 0 32%;
+	
+	color: rgb(2, 12, 20);
+	font-size: 18px;
+	font-weight: bolder;
+	border-radius: 7px;
+}
+
+#rep  #ReporteU[type="button"]:hover{
+    background: #0fbbe6;
+
+}
+#rep  #ReporteU[type="button"]:active{
+    box-shadow: 2px 2px 2px rgb(19, 64, 71), 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #5973eb;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+}
+
+#rep  #ReporteC{
+	width: 480px;
+    height: 40px;
+	background:linear-gradient(30deg,#78c7f8,#5abaf1,#0c99eb,#032e47,rgb(3, 39, 58));
+	margin: 10px 32%;
+	
+	color: rgb(2, 12, 20);
+	font-size: 18px;
+	font-weight: bolder;
+	border-radius: 7px;
+}
+
+#rep  #ReporteC[type="button"]:hover{
+    background: #0fbbe6;
+
+}
+#rep  #ReporteC[type="button"]:active{
+    box-shadow: 2px 2px 2px rgb(19, 64, 71), 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #5973eb;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+}
+
+/*Reporte de juegos*/
+.tabla {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 12px;
+	margin: 3px; 
+	width: 480px;
+	text-align: left;
+	border-bottom: 5px #cde4ee;
+}
+.tabla th{
+	font-size: 13px;
+	font-weight: 700;
+	padding: 8px;
+	background: #0e3a42;
+	border-top: 4px solid #c6cad4;
+	border-bottom: 3px solid #fff;
+	color: rgb(217, 221, 228);
+}
+
+.tabla tr td{
+	padding: 8px;
+	background: #e8edff;
+	border-bottom: 1px solid #fff;
+	color: rgb(29, 29, 104);
+	border-top: 1px solid transparent;
+	width: 100px;
+
+	
+	white-space: nowrap;
+	
+}
+#repJ #generarR{
+	width: 480px;
+    height: 40px;
+	background:linear-gradient(30deg,#16b1c5,#20d1e9,#0694ad,#46c0df,rgb(5, 161, 189));
+	margin: 10px 32%;
+	
+	color: rgb(2, 12, 20);
+	font-size: 18px;
+	font-weight: bolder;
+	border-radius: 7px;
+}
+
+#repJ #generarR[type="button"]:hover{
+	background: #094f61;
+	color: white;
+
+}
+#repJ #generarR[type="button"]:active{
+    box-shadow: 2px 2px 2px rgb(198, 215, 218), 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #5973eb;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+}
+/*Reporte de juegos*/
+.tablaU {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 16px;
+	margin: 20px 3px; 
+	width: 480px;
+	text-align: left;
+	border-bottom: 5px #cde4ee;
+}
+.tablaU th{
+	font-size: 17px;
+	font-weight: 700;
+	padding: 8px;
+	background: #0e3a42;
+	border-top: 4px solid #c6cad4;
+	border-bottom: 3px solid #fff;
+	color: rgb(217, 221, 228);
+}
+
+.tablaU tr td{
+	padding: 8px;
+	background: #e8edff;
+	border-bottom: 1px solid #fff;
+	color: rgb(29, 29, 104);
+	border-top: 1px solid transparent;
+	width: 100px;
+
+	
+	white-space: nowrap;
+	
+}
+#repU #generarU{
+	width: 480px;
+    height: 40px;
+	background:linear-gradient(30deg,#16b1c5,#20d1e9,#0694ad,#46c0df,rgb(5, 161, 189));
+	margin: 10px center;
+	
+	color: rgb(2, 12, 20);
+	font-size: 18px;
+	font-weight: bolder;
+	border-radius: 7px;
+}
+
+#repU #generarU[type="button"]:hover{
+	background: #094f61;
+	color: white;
+
+}
+#repU #generarU[type="button"]:active{
+    box-shadow: 2px 2px 2px rgb(198, 215, 218), 0px 0px 35px
+    0px #00b7f8;
+    border-bottom: 1px solid #5973eb;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px
+    #fff;
+    transform: translate(4px);
+    transition: all 0.1s ease 0s;
+    
+}
+
+#repU #miSelect{
+
 }

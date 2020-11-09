@@ -58,7 +58,7 @@
           window.alert("El usario no ha sido encontrado")
          }else{
           window.alert("Bienvenido "+response.nombre)
-          window.alert(response.id)
+          
           sessionStorage.setItem("id",response.id)
           if(response.tipo=="admin"){ 
             location.href="Principal.html"

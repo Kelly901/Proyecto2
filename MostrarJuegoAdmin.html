@@ -27,7 +27,7 @@
 
             <div id="menu">
                 <ul>
-                    <li><a href="Principal2.html">Inicio</a></li>
+                    <li><a href="Principal.html">Inicio</a></li>
 
                     <li><a href="">Contacto</a></li>
                 </ul>
@@ -65,9 +65,14 @@
         <div id="centro3">
             <div id="menu2">
                 <ul>
-                    <li><a href="CatalagoCliente.html">Catalogo de videojuegos</a></li>
-                    <li><a href="MiBiblioteca.html">Mi biblioteca</a></li>
-                    <li><a href="Perfil.html">Perfil</a></li>
+                    <li ><a href="Catalogo.html">Catalogo de videojuegos</a></li>
+
+                    <li ><a href="BibliotecaAdmin.html">Mi biblioteca</a></li>
+                    <li ><a href="mostrarUsuarios.html">Perfil</a></li>
+                    <li ><a href="CargarMasiva.html">Carga Masiva</a></li>
+                    <li ><a href="Crud.html">CRUD de videojuegos </a></li>
+                    <li ><a href="GenerarReportes.html">Generar Reportes </a></li>
+                    <li ><a href="CrearUsuario.html">Crear usuario </a></li>
 
                 </ul>
             </div>
@@ -117,7 +122,7 @@
             const urlParams = new URLSearchParams(queryString);
             const id = urlParams.get('idJuego')
 
-            window.alert(id)
+           
 
             fetch("http://127.0.0.1:9000/mostrarJuego", {
                 method: 'POST',
@@ -137,7 +142,7 @@
 
 
                     console.log(response.nombre)
-                    window.alert("Listo")
+                   
                     var colocarBanner = document.querySelector('#cuerpo #mostrarBanner')
                     var colocarImagen = document.querySelector('#cuerpo #mostrarImagen')
                     var colocarInfo = document.querySelector('#cuerpo #mostrarInfo')
@@ -189,8 +194,8 @@
 
                     console.log(response.fecha)
                     console.log(response.comentario)
-                    
-                    location.href="MostrarJuego.html?idJuego="+id
+                    alert("Comentario agregado")
+                    location.href="MostrarJuegoAdmin.html?idJuego="+id
                 })
                
         }
@@ -340,9 +345,9 @@
            var variable=document.getElementById('miselect').value
 
            if(buscar==""){
-            location.href="MostrarPorGenero.html?idGenero="+variable
+            location.href="MostrarPorGeneroAdmin.html?idGenero="+variable
            }else{
-            location.href="MostrarPorGenero.html?idGenero="+buscar
+            location.href="MostrarPorGeneroAdmin.html?idGenero="+buscar
            }
            
            

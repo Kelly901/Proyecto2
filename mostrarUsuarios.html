@@ -19,7 +19,7 @@
       <div id="centro1">
         
         <div id=logo>
-          <h2>Tienda de juegos</h2>
+          <h2>World Games Store</h2>
           <p>Diversión sin límite</p>
         </div>
 
@@ -28,7 +28,7 @@
             <li ><a href="Principal.html">Inicio</a></li>
 
             <li ><a href="registro.html">Registrarse</a></li>
-            <li ><a href="">Contatacto</a></li>
+            <li ><a href="">Contacto</a></li>
           </ul>
         </div>
 
@@ -38,7 +38,7 @@
     <div id="presentacion">
       <div id="centro2">
         <div id="izquierda">
-           <h2>Bienvenidos a game store</h2>
+           <h2>Bienvenidos a World Games Store</h2>
           <p class="decripcion-pres">La tienda virtual mas grande de video juegos</p>
           <button class="boton">Mas informacion</button>
         </div>
@@ -46,13 +46,10 @@
           <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
           <div id="categoria">
             <select id="miselect">
-              <option value="">Sleeciona</option>
-              <option value="1">valor1</option>
-              <option value="2">valor2</option>
-              <option value="3">valor3</option>
+              
             </select>
 
-            <input for="texto" type="text" placeholder="Buscar"> 
+            <input id="buscar1" for="texto" type="text" placeholder="Buscar"> 
         </div>
           </div>
           
@@ -68,11 +65,11 @@
           <ul>
             <li ><a href="Catalogo.html">Catalogo de videojuegos</a></li>
 
-            <li ><a href="">Mi biblioteca</a></li>
+            <li ><a href="BibliotecaAdmin.html">Mi biblioteca</a></li>
             <li ><a href="mostrarUsuarios.html">Perfil</a></li>
             <li ><a href="CargarMasiva.html">Carga Masiva</a></li>
-            <li ><a href="">CRUD de videojuegos </a></li>
-            <li ><a href="">Generar Reportes </a></li>
+            <li ><a href="Crud.html">CRUD de videojuegos </a></li>
+            <li ><a href="GenerarReportes.html">Generar Reportes </a></li>
             <li ><a href="CrearUsuario.html">Crear usuario </a></li>
           </ul>
         </div>
@@ -150,7 +147,7 @@
                                           `
                                                                         
            });
-           
+           mostrarOpcion()
         })
       }
       
@@ -192,6 +189,59 @@
             location.href="mostrarUsuarios.html"
           }
         })
+      }
+      //Agregar Opciones al selected
+        //
+       
+        function mostrarOpcion(){
+        fetch("http://127.0.0.1:9000/mostrarOpcion",{
+          method:'GET',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response =>{
+          var genero= response
+          console.log(genero)
+          var colocarGenero= document.querySelector('#presentacion #centro2 #derecha #categoria #miselect')
+          var colocarBoton=document.querySelector('#presentacion #centro2 #derecha #categoria')
+         
+           genero.forEach(element => {
+             
+              colocarGenero.innerHTML +=` 
+                                          <option id ="opcion"value="${element.genero}">${element.genero}</option>
+                                            
+                                        `
+                                                   
+            
+           });
+          
+           var opcion= document.getElementById('opcion').value
+           console.log(opcion)
+           colocarBoton.innerHTML +=`
+                                     <button id="botonBuscar" type="button" onclick="activarBoton()">Buscar</button>
+                                   `    
+        })
+
+      }
+
+      function activarBoton(){
+
+          var buscar=document.getElementById('buscar1').value
+           var variable=document.getElementById('miselect').value
+
+           if(buscar==""){
+            location.href="MostrarPorGeneroAdmin.html?idGenero="+variable
+           }else{
+            location.href="MostrarPorGeneroAdmin.html?idGenero="+buscar
+           }
+           
+           
+
       }
     </script>
 </body>

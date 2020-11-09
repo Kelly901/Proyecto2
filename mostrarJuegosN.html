@@ -21,7 +21,7 @@
         <div id="centro1">
 
             <div id=logo>
-                <h2>Tienda de juegos</h2>
+                <h2>World Games Store</h2>
                 <p>Diversión sin límite</p>
             </div>
 
@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="Principal3.html">Inicio</a></li>
 
-                    <li><a href="">Contacto</a></li>
+                    <li><a href="">Contacto: +502 10101010</a></li>
                 </ul>
             </div>
 
@@ -39,7 +39,7 @@
     <div id="presentacion">
         <div id="centro2">
             <div id="izquierda">
-                <h2>Bienvenidos a game store</h2>
+                <h2>Bienvenidos a World Games Store</h2>
                 <p class="decripcion-pres">La tienda virtual mas grande de video juegos</p>
                 <button class="boton">Mas informacion</button>
             </div>
@@ -47,14 +47,11 @@
                 <img src="https://www.magisnet.com/wp-content/uploads/2020/04/Videojuegos.jpg" class="img">
                 <div id="categoria">
                     <select id="miselect">
-                        <option value="">Sleeciona</option>
-                        <option value="1">valor1</option>
-                        <option value="2">valor2</option>
-                        <option value="3">valor3</option>
+                      
                     </select>
 
-                    <input for="texto" type="text" placeholder="Buscar">
-                    <button id="botonBuscar">Buscar</button>
+                    <input id="buscar1" for="texto" type="text" placeholder="Buscar">
+                    
                 </div>
             </div>
 
@@ -68,7 +65,7 @@
         <div id="centro3">
             <div id="menu2">
                 <ul>
-                    <li><a href="CatalagoCliente.html">Catalogo de videojuegos</a></li>
+                    <li><a href="CatalogoNo.html">Catalogo de videojuegos</a></li>
                     
 
                 </ul>
@@ -225,45 +222,65 @@
                     });
 
                     }
-
+                    
+                    mostrarOpcion()
                 })
 
         }
         
-       //Funcion para agregar un juego a la biblioteca
+      //
 
-       function agregarABibliote() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const idJ = urlParams.get('idJuego')  
-        var idU=sessionStorage.getItem("id")
-        fetch("http://127.0.0.1:9000/agregarAbiblioteca", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "idU": idU,
-                    "idJ": idJ
+      
+      function mostrarOpcion(){
+        fetch("http://127.0.0.1:9000/mostrarOpcion",{
+          method:'GET',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+          
+        }).then(res=> res.json())
+        .catch(err=> {
+          console.log(err)
+        })
+        .then(response =>{
+          var genero= response
+          console.log(genero)
+          var colocarGenero= document.querySelector('#presentacion #centro2 #derecha #categoria #miselect')
+          var colocarBoton=document.querySelector('#presentacion #centro2 #derecha #categoria')
+         
+           genero.forEach(element => {
+             
+              colocarGenero.innerHTML +=` 
+                                          <option id ="opcion"value="${element.genero}">${element.genero}</option>
+                                            
+                                        `
+                                                   
+            
+           });
+          
+           var opcion= document.getElementById('opcion').value
+           console.log(opcion)
+           colocarBoton.innerHTML +=`
+                                     <button id="botonBuscar" type="button" onclick="activarBoton()">Buscar</button>
+                                   `    
+        })
 
+      }
 
+      function activarBoton(){
 
-                })
+          var buscar=document.getElementById('buscar1').value
+           var variable=document.getElementById('miselect').value
 
-            }).then(res => res.json())
-                .catch(err => {
-                    console.log(err)
-                })
-                .then(response => {
-                    var datos = response
-                    window.alert("Juego"+datos.id +" agregado")
+           if(buscar==""){
+            location.href="MostrarPorGeneroNo.html?idGenero="+variable
+           }else{
+            location.href="MostrarPorGeneroNo.html?idGenero="+buscar
+           }
+           
+           
 
-                    
-                    
-
-                })
-       }
-
+      }
     </script>
 
 </body>
