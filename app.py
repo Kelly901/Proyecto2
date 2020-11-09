@@ -15,6 +15,8 @@ CORS(app)
 miUsuario=[]
 
 us=Autenticacion()
+us.crearUsuario("Usuario","Maestro","admin","admin","admin")
+
 
 us.listar()
 
