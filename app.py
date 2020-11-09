@@ -1,6 +1,4 @@
-from flask import Flask,request,jsonify,render_template,make_response
-import pdfkit
-from jinja2 import Environment,FileSystemLoader
+from flask import Flask,request,jsonify
 from Autenticacion import Autenticacion
 from AutenticacioJuego import AutenticacionJuego
 from Juego import Juego
