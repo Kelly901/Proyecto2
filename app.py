@@ -280,6 +280,7 @@ def mostrarBiblioteca():
 	for u in GuardarEnBiblioteca.biblioteca:
 		biblio={
 				'id':u.id,
+				'idJ':u.idJ,
 				'idU':u.idU,
 				'nombre': var.nombreJuego(str(u.idJ)),
 				'foto':var.fotoJuego(str(u.idJ))
